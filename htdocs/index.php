@@ -8,7 +8,7 @@ require_once('include/body-start.inc.php');
 <tr>
 <td width="100%" height="100%" align=center valign=middle>
 <table border="0" cellspacing="0" cellpadding="0" align=center valign=middle>
-<tr><td align=right><?php new IntlDateFormatter('en_US', IntlDateFormatter::LONG, IntlDateFormatter::NONE)->format(time()); ?></td></tr>
+<tr><td align=right><?php echo (new IntlDateFormatter('nl_NL', IntlDateFormatter::LONG, IntlDateFormatter::LONG))->format(time()); ?></td></tr>
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
 <tr bgcolor="#000000"><td><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
@@ -16,7 +16,7 @@ require_once('include/body-start.inc.php');
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
 <tr bgcolor="#000000"><td><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
-<tr><td align=left><?php new IntlDateFormatter('en_US', IntlDateFormatter::LONG, IntlDateFormatter::NONE)->format(time()); ?><</td></tr>
+<tr><td align=left><?php echo (new IntlDateFormatter('nl_NL', IntlDateFormatter::LONG, IntlDateFormatter::LONG))->format(time()); ?><</td></tr>
 </table>
 </td>
 </tr>
