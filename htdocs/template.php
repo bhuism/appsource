@@ -1,0 +1,13 @@
+<?php
+require_once('include/html-start.inc.php');
+require_once('include/head-start.inc.php');
+require_once('include/head-stop.inc.php');
+require_once('include/body-start.inc.php');
+require_once('include/menu-start.inc.php');
+?>
+content...
+<?php
+require_once('include/menu-stop.inc.php');
+require_once('include/body-stop.inc.php');
+require_once('include/html-stop.inc.php');
+?>
