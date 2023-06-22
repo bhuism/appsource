@@ -16,7 +16,7 @@ require_once('include/body-start.inc.php');
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
 <tr bgcolor="#000000"><td><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
 <tr><td><img src="/images/pixel.gif" width="1" height="2" alt=""></td></tr>
-<tr><td align=left><?php echo date('r', time()); ?><</td></tr>
+<tr><td align=left><?php echo date('r', time()); ?></td></tr>
 </table>
 </td>
 </tr>
