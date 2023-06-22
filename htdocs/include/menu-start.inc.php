@@ -6,12 +6,12 @@
 
 $menuitems = Array('home'=>'index.php','calendar'=>'','contact'=>'');
 
-while (list($key,$val) = each($menuitems))
+foreach ($menuitems as $key => $val)
 	{
 	$link = ((strlen($val)>0)?$val:'/'.$key.'.php');
 	$menulinks[$key] = "<a href=\"$link\">".(($_SERVER['PHP_SELF']===$link)?'<b>':'').$key.(($_SERVER['PHP_SELF']===$link)?'</b>':'').'</a>';
 	};
-echo implode($menulinks,'&nbsp;<big><strong>&middot;</strong></big>&nbsp;'); 
+echo implode('&nbsp;<big><strong>&middot;</strong></big>&nbsp;', $menulinks);
 ?></td>
 <td>&nbsp;</td>
 <td align=right valign=bottom width="45%"><?php echo strftime('%a, %b %e %Y'); ?>&nbsp;</td>
