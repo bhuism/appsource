@@ -14,7 +14,7 @@ foreach ($menuitems as $key => $val)
 echo implode('&nbsp;<big><strong>&middot;</strong></big>&nbsp;', $menulinks);
 ?></td>
 <td>&nbsp;</td>
-<td align=right valign=bottom width="45%"><?php echo strftime('%a, %b %e %Y'); ?>&nbsp;</td>
+<td align=right valign=bottom width="45%"><?php echo date('r', time()); ?>&nbsp;</td>
 </tr>
 <tr><td colspan="3"><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
 <tr bgcolor="#000000"><td colspan="3"><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
