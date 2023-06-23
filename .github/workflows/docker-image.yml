@@ -47,6 +47,5 @@ jobs:
 
       - name: "Rollout restart"
         run: |
-          sudo echo "212.120.94.181 control.impl.nl" | sudo tee -a /etc/hosts
-          kubectl rollout restart deployment -n appsource appsource
+          kubectl --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
           
