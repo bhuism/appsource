@@ -12,7 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        name: Build the Docker image
+      
+      - name: Build the Docker image
         run: docker build . --file Dockerfile --tag europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
       - id: "auth"
