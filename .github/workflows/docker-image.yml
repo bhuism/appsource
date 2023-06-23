@@ -45,7 +45,7 @@ jobs:
            method: kubeconfig
            kubeconfig:  ${{ secrets.KUBE_CONFIG }}
 
-      - name: "Rollout restart"
+      - name: "Rollout restarted"
         run: |
               kubectl rollout restart deployment -n appsource appsource
           
