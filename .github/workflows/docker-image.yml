@@ -33,11 +33,11 @@ jobs:
 
       - name: "Push image to GCR"
         run: |
-          docker push europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
+          docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
       - uses: actions-hub/kubectl@master
         env:
-          KUBECONFIG: ${{ secrets.KUBE_CONFIG }}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
       - uses: actions-hub/kubectl@master
         with:
