@@ -16,7 +16,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . -q --file Dockerfile --tag europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
-      - id: "auth"
+      - id: gcp_auth
         name: "Authenticate to Google Cloud"
         uses: "google-github-actions/auth@v1"
         with:
@@ -35,15 +35,13 @@ jobs:
         run: |
           docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
-      - uses: actions-hub/kubectl@master
+      - id: install_kubectl
+        name: "Install kubectl"
+        uses: azure/setup-kubectl@v3
+
+      - name: "Rollout restart"
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-
-      - uses: actions-hub/kubectl@master
-        with:
-          args: get pods
-
-      # - name: "rollout"
-      #   run: |
-      #     kubectl rollout restart deployment  -n appsource  appsource
+        run: |
+              kubectl rollout restart deployment -n appsource appsource
           
