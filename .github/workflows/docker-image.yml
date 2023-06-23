@@ -35,9 +35,9 @@ jobs:
         run: |
           docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
-      - id: install_kubectl
-        name: "Install kubectl"
-        uses: azure/setup-kubectl@v3
+      # - id: install_kubectl
+      #   name: "Install kubectl"
+      #   uses: azure/setup-kubectl@v3
 
       - name: "Configure kubectl"
         uses: azure/k8s-set-context@v3
