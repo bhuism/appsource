@@ -39,9 +39,13 @@ jobs:
         name: "Install kubectl"
         uses: azure/setup-kubectl@v3
 
+      - name: "Configure kubectl"
+        uses: azure/k8s-set-context@v3
+        with:
+           method: kubeconfig
+           kubeconfig:  ${{ secrets.KUBE_CONFIG }}
+
       - name: "Rollout restart"
-        env:
-          KUBECONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
               kubectl rollout restart deployment -n appsource appsource
           
