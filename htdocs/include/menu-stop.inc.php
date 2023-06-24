@@ -13,5 +13,3 @@
 </tr>
 <tr><td colspan="3"><img src="/images/pixel.gif" width="1" height="1" alt=""></td></tr>
 </table>
-check <a href="http://validator.w3.org/check?uri=<?php echo rawurlencode('http://www.appsource.nl'); ?>">html</a>
- <a href="http://jigsaw.w3.org/css-validator/validator?uri=<?php echo rawurlencode('http://www.appsource.nl'); ?>">css</a>
