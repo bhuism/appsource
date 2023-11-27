@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.3-apache
 ARG GITHUB_SHA
 ENV GITHUB_SHA=$GITHUB_SHA
 RUN sed -i "s/Listen 80/Listen 8080/g" /etc/apache2/ports.conf 
