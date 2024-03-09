@@ -35,13 +35,14 @@ jobs:
         run: |
           docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
+      - name: "Install kubectl"
+        run: |
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+            chmod 755 ./kubectl
+
       - name: "Rollout restart"
         env:
           KBCONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
-          chmod 755 ./kubectl
           echo "${KBCONFIG}" > /tmp/kube_config
-          ls -la /tmp
-          export KUBECONFIG=/tmp/kube_config
-          ./kubectl --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
+          ./kubectl --kubeconfig /tmp/kube_config --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
