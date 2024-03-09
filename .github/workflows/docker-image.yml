@@ -39,7 +39,9 @@ jobs:
         env:
           KBCONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+          chmod 755 ./kubectl
           echo "${KBCONFIG}" > /tmp/kube_config
           ls -la /tmp
           export KUBECONFIG=/tmp/kube_config
-          kubectl --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
+          ./kubectl --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
