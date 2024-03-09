@@ -40,7 +40,7 @@ jobs:
         uses: azure/setup-kubectl@v3
 
       - name: "Configure kubectl"
-        uses: azure/k8s-set-context@v3
+        uses: azure/k8s-set-context@v4
         with:
            method: kubeconfig
            kubeconfig:  ${{ secrets.KUBE_CONFIG }}
