@@ -38,6 +38,6 @@ jobs:
       - name: "Rollout restart"
         run: |
           export KUBECONFIG=/tmp/kube_config
-          echo ${{ secrets.KUBE_CONFIG }} > $KUBECONFIG
+          echo "${{ secrets.KUBE_CONFIG }}" > /tmp/kube_config
           ls -la /tmp
           kubectl --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
