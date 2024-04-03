@@ -10,29 +10,8 @@ require_once('include/menu-start.inc.php');
 <tr><td>Appsource Holding b.v.<br>
 Roucooppark 25<br>
 2251 AX Voorschoten</b><br></td></tr>
-<!--
-<tr><td bgcolor="#dddddd"><b>&middot;&nbsp;Phone</b></td></tr>
-<tr><td>+31 (0)70 3837460</td></tr>
-<tr><td bgcolor="#dddddd"><b>&middot;&nbsp;Fax</b></td></tr>
-<tr><td>+31 (0)70 3837478<br></td></tr>
--->
 <tr><td bgcolor="#dddddd"><b>&middot;&nbsp;E-mail</b></td></tr>
-<tr><td>info at appsource.nl
-<tr><td bgcolor="#dddddd"><b>&middot;&nbsp;KvK Haaglanden</b></td></tr>
-<tr><td>27242866</td></tr>
-
-<tr><td>
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="AAANCT4ETMCNQ">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-
-</td></tr>
-
+<tr><td>info at appsource.nl</td></tr>
 </table>
 
 
