@@ -1,6 +1,5 @@
 <?php
 
-#include ('mysql.inc.php');
 include ('html.inc.php');
 
 function html($var)
