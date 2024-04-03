@@ -4,7 +4,6 @@
   "platform": "github",
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor"],
       "automerge": true
     }
   ]
