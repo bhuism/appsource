@@ -24,14 +24,11 @@ return	'</td><td background="test/r.gif"><img width="1" height="1" src="/images/
 };
 
 $timetoshow = ( (is_numeric($_SERVER["QUERY_STRING"])) ? $_SERVER["QUERY_STRING"] : time() );
-$yeartoshow = strftime('%y',$timetoshow)+0;
-$yearstart = mktime(0,0,0,1,1,$yeartoshow);
-$yearstop = mktime(23,59,59,1,0,$yeartoshow+1);
+// $yeartoshow = date('Y',$timetoshow)+0;
+// $yearstart = mktime(0,0,0,1,1,$yeartoshow);
+// $yearstop = mktime(23,59,59,1,0,$yeartoshow+1);
 
-$highlight = Array();
-for ($i = 0;$i < 100;$i++) $highlight[] = mt_rand($yearstart,$yearstop);
-
-$cal = new Callendar($highlight);
+$cal = new Callendar();
 
 $borders = Array(0=>0,1=>1,2=>2,3=>3,4=>4,5=>5);
 $cellpaddings = Array(0=>0,1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9);
@@ -82,34 +79,6 @@ $items = Array(
 		'linkonlyactivedays' =>	Array('type'=>'checkbox','membervar'=>'LinkOnlyActiveDays')
 		);
 
-/*
-reset($items);
-while (list($key,$item) = each($items))
-	{
-	if ($item['type'] === 'option')
-		{
-		if ((isset($HTTP_POST_VARS[$key])) && (isset($item['array'][$HTTP_POST_VARS[$key]])))
-			{
-			$cal->$item['membervar'] = $HTTP_POST_VARS[$key];
-			};
-		}
-	elseif ($item['type'] === 'checkbox')
-		{
-		if ($HTTP_POST_VARS['button'] === 'Update')
-			{
-			if ($HTTP_POST_VARS[$key] === 'on') $cal->$item['membervar'] = true;
-			else $cal->$item['membervar'] = false;
-			};
-		}
-	elseif ($item['type'] === 'text')
-		{
-		if ((strlen($HTTP_POST_VARS[$key]) > 0) && (strlen($HTTP_POST_VARS[$key]) < 40))
-			{
-			$cal->$item['membervar'] = ($HTTP_POST_VARS[$key]);
-			};
-		};
-	};
-*/
 
 echo "<center>\n";
 echo '<table border="0" cellpadding="1" cellspacing="2">'."\n";
@@ -118,9 +87,9 @@ echo '<td colspan="4">'."\n";
 
 echo '<table border="0" cellpadding="0" cellspacing="0" width="100%">';
 echo '<tr>';
-echo '<td valign=bottom align="left"><font size="+1"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,strftime('%Y',$timetoshow)-1).'">'.(strftime('%Y',$timetoshow)-1).'</a></font></td>';
-echo '<td valign=bottom align="center"><font size="+2"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,strftime('%Y',$timetoshow)).'">'.strftime('%Y',$timetoshow).'</a></font></td>';
-echo '<td valign=bottom align="right"><font size="+1"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,strftime('%Y',$timetoshow)+1).'">'.(strftime('%Y',$timetoshow)+1).'</a></font></td>';
+echo '<td valign=bottom align="left"><font size="+1"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,date('Y',$timetoshow)-1).'">'.(date('Y',$timetoshow)-1).'</a></font></td>';
+echo '<td valign=bottom align="center"><font size="+2"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,date('Y',$timetoshow)).'">'.date('Y',$timetoshow).'</a></font></td>';
+echo '<td valign=bottom align="right"><font size="+1"><a href="'.$_SERVER['PHP_SELF'].'?'.mktime(0,0,0,1,1,date('Y',$timetoshow)+1).'">'.(date('Y',$timetoshow)+1).'</a></font></td>';
 echo '</tr>';
 echo '</table>';
 
@@ -130,7 +99,7 @@ for ($y = 0;$y < 3;$y++)
 	echo "<tr>\n";
 	for ($x = 0;$x < 4;$x++)
 		{
-		$temp = mktime(0,0,0,$counter++,1,strftime('%Y',$timetoshow));
+		$temp = mktime(0,0,0,$counter++,1,date('Y',$timetoshow));
 		echo '<td align=center valign=top>'.$cal->String($temp).'</td>';
 		};
 	echo "</tr>\n";

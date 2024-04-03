@@ -6,10 +6,6 @@ require_once('include/body-start.inc.php');
 require_once('include/menu-start.inc.php');
 ?>
 <table border="0" cellpadding="2" cellspacing="0">
-<tr><td bgcolor="#dddddd"><b>&middot;&nbsp;Mailing address</b></td></tr>
-<tr><td>Appsource Holding b.v.<br>
-Roucooppark 25<br>
-2251 AX Voorschoten</b><br></td></tr>
 <tr><td bgcolor="#dddddd"><b>&middot;&nbsp;E-mail</b></td></tr>
 <tr><td>info at appsource.nl</td></tr>
 </table>
