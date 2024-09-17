@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
-    name: Build docker image
+    name: Build and push docker image
 
     steps:
       - uses: actions/checkout@v4
@@ -17,12 +17,6 @@ jobs:
       - name: Build the Docker image
         run: docker build . -q --file Dockerfile --tag europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest --build-arg GITHUB_SHA=${GITHUB_SHA}
 
-  push:
-    needs: build
-    runs-on: buildjet-4vcpu-ubuntu-2204-arm
-    name: Push docker image
-    if: github.ref == 'refs/heads/main'
-    steps:
       - id: gcp_auth
         name: "Authenticate to Google Cloud"
         uses: "google-github-actions/auth@v2"
@@ -43,7 +37,7 @@ jobs:
           docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
   deploy:
-    needs: push
+    needs: build
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
     name: Deploy image
     if: github.ref == 'refs/heads/main'
