@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
+    name: Build docker image
 
     steps:
       - uses: actions/checkout@v4
@@ -35,6 +36,11 @@ jobs:
         run: |
           docker push -q europe-west4-docker.pkg.dev/impl-383520/docker/appsource:latest
 
+  deploy:
+    needs: build
+    runs-on: buildjet-4vcpu-ubuntu-2204-arm
+    name: Deploy image
+    steps:
       - name: "Install kubectl"
         run: |
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
