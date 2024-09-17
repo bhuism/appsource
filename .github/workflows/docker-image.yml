@@ -21,7 +21,7 @@ jobs:
     needs: build
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
     name: Push docker image
-    if: github.ref == 'refs/heads/development'
+    if: github.ref == 'refs/heads/main'
     steps:
       - id: gcp_auth
         name: "Authenticate to Google Cloud"
@@ -46,7 +46,7 @@ jobs:
     needs: push
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
     name: Deploy image
-    if: github.ref == 'refs/heads/development'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: "Install kubectl"
         run: |
