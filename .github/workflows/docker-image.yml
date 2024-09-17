@@ -40,6 +40,7 @@ jobs:
     needs: build
     runs-on: buildjet-4vcpu-ubuntu-2204-arm
     name: Deploy image
+    if: github.ref == 'refs/heads/development'
     steps:
       - name: "Install kubectl"
         run: |
