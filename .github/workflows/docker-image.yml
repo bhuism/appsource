@@ -38,13 +38,13 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: buildjet-4vcpu-ubuntu-2204-arm
+    runs-on: ubuntu-latest
     name: Deploy image
     if: github.ref == 'refs/heads/main'
     steps:
       - name: "Install kubectl"
         run: |
-            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             chmod 755 ./kubectl
 
       - name: "Rollout restart"
