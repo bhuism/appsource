@@ -40,26 +40,22 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v6
+        id: build-and-push
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
 
-  deploy:
-    needs: build
+  rollout-restart:
+    needs: build-and-push
     runs-on: ubuntu-latest
-    name: Deploy image
-    if: github.ref == 'refs/heads/main'
+    name: Rollout Restart
     steps:
-      - name: "Install kubectl"
-        run: |
-          curl -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod 755 ./kubectl
-
-      - name: "Rollout restart"
-        env:
-          KBCONFIG: ${{ secrets.KUBE_CONFIG }}
-        run: |
-          echo "${KBCONFIG}" > /tmp/kube_config
-          ./kubectl --kubeconfig /tmp/kube_config --insecure-skip-tls-verify rollout restart deployment -n appsource appsource
+      - name: Kubernetes context
+        uses: Azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Rollout Restart
+        run: kubectl  -n appsource rollout restart deployment appsource
