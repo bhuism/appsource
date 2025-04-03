@@ -48,7 +48,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
 
   rollout-restart:
-    needs: build-and-push
+    needs: build
     runs-on: ubuntu-latest
     name: Rollout Restart
     steps:
