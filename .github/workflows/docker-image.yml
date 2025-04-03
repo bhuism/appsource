@@ -25,9 +25,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/bhuism/appsource:latest
+          tags: ghcr.io/${{ github.repository }}:latest
 
   deploy:
     needs: build
@@ -37,8 +38,8 @@ jobs:
     steps:
       - name: "Install kubectl"
         run: |
-            curl -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-            chmod 755 ./kubectl
+          curl -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod 755 ./kubectl
 
       - name: "Rollout restart"
         env:
