@@ -25,7 +25,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: bhuism/appsource:latest
+          tags: ghcr.io/bhuism/appsource:latest
 
   deploy:
     needs: build
