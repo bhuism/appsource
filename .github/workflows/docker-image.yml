@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
+    permissions:
+      packages: write
     name: Build and push docker image
 
     steps:
@@ -25,6 +27,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
+          tags: ghcr.io/bhuism/appsource:latest
 
   deploy:
     needs: build
